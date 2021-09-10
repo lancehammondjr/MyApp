@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <div class="alert-container alert-color-notification blog-alert" style="display: block; background-color: rgb(39, 169, 225);">
+
+    </div>    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <div class="lcraLogoTop">
+        <div class="lcraLogo">
+            <img src="./image/LCRA_288.png" alt="">
+        </div>
+    </div>
+    <title>Asset Entry</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--<div>
+        <img src="image/LCRA_288.png" alt="">
+    </div>-->
+<div class="assetEntry">
+    <div class="bar" style="display: block; background-color: white;">
+ 
+    </div>
+    <h1>Asset Entry</h1>
+    <div>
+        <form id="myForm">
+            <div class="assetBody">
+            <div class="test">
+                <label for="dname">Device Name:</label>
+                <input type="text" id="dname" name="dname"><span class="requiredField">*</span> 
+            </div>
+            <br>
+            <div class="test">
+                <label for="mname">NIC Address:</label>
+                <input type="text" id="mname" name="mname" size="" placeholder="Enter numbers and alphabets only."><span class="requiredField">*</span>
+            </div>
+            <br>
+            <div class="test">
+                <label for="departName">Choose Department:</label>
+                <select name="lcraDepart" class="lcraDepart" id="lcraDepart" size="" onclick="whichDepart();">
+                <option value="">--Please choose an option--</option>
+                </select> <!--<button onclick="whichDepart()">Click Here</button>-->
+            </div>
+            <br>
+            <div class="test">
+                <label for="bname">Choose Building:</label>
+                <select name="lcraBuild" class="lcraBuild" id="lcraBuild" onclick="whichBuild();">
+                <option value="">--Please choose an option--</option>
+                </select>
+            </div>
+            <br>
+            <div class="test">
+                <label for="office">Office Number:</label>
+                <input type="text" id="officeNum" name="officeNum">
+            </div>
+            <br>
+            <div class="test">
+                <label for="shared">Shared Device:</label>
+                <select name="sharedDev" id="sharedDev">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+            <br>
+            <div class="test">
+            <label for="store">In Storage:</label>
+            <select name="inStor" id="inStor">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+            </div>
+            <br>
+            <div class="test">
+            <label for="decom">Been Decommissioned:</label>
+            <select name="decomm" id="decomm">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+            </div>
+            <br>
+            <div class="test">
+                <label for="comment">Comments:</label>
+                <br>
+                <textarea id="commentBox" class="commentBox" onkeyup="countChars(this);" maxlength="150" name="commentBox" rows="4" cols="50" placeholder="Start Typin..."autofocus></textarea>
+                <br>
+                <div id="the-count">
+                    <span id="current">0</span>
+                    <span id="maximum">/ 150</span>
+                </div>
+            </div>
+            </div>
+            <br>
+            <div class="container" >
+                <div class="center">
+                    <input type="button" id="bt" value="Save data to file" onclick="saveFile()">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

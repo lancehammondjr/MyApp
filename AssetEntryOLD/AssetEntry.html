@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+    <div class="alert-container alert-color-notification blog-alert" style="display: block; background-color: rgb(39, 169, 225);">
+
+    </div>    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <div class="lcraLogoTop">
+        <div class="lcraLogo">
+            <img src="./image/LCRA_288.png" alt="">
+        </div>
+    </div>
+    <title>Asset Entry</title>
+    <style>
+        body{
+    font-family: 'futura-pt-bold', 'FuturaStd-Heavy', sans-serif;
+    margin: 0 0 0 0;
+}
+
+.assetEntry {
+    background-image: url(./image/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.assetBody {
+    padding: 2%;
+}
+
+.select {
+    font-size: .9rem;
+    padding: 2px 5px;
+}
+
+h1{
+    text-align: center;
+    font-size: 100px;
+    margin-top: 0;
+    color: white;
+    margin-bottom: 20px;
+    border-bottom-width: thin;
+    border-style: none none dotted none;
+    border-color: white;
+}
+
+.bar {
+    display: none;
+    min-height: 10%;
+    position: relative;
+    width: 100%;
+    z-index: 8;
+}
+
+
+label{
+    font-size: 40px;
+    color: white;
+}
+
+select{
+    size: 50px;
+    font-size: 40px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: inset 0 0 0.25rem
+}
+
+input{
+    font-size: 40px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: inset 0 0 0.25rem
+}
+.commentBox {
+    text-align: left;
+    width: 500px;
+    height: 100px;
+    font-size: 20px;
+}
+#the-count {
+    float: right;
+    padding: 0.1rem 0 0 0;
+    font-size: 0.875rem;
+}
+#current {
+    color: white;
+}
+#maximum {
+    color: white;
+}
+textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: none;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    color: #666;
+    box-shadow: inset 0 0 0.25rem
+}
+
+span {
+    font-size: 25px;
+    color: red;
+}
+.test {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.requiredField {
+    position: absolute;
+    top: 0;
+    right: 5;
+}
+::placeholder {
+    font-size: 30px;
+}
+
+.alert-container {
+    display: none;
+    min-height: 7px;
+    position: relative;
+    width: 100%;
+    z-index: 8;
+}
+
+.lcraLogoTop {
+    background-image: url(./image/Rocks.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.lcraLogo {
+    width: 125px; 
+}
+
+img{
+    max-width: 100%;
+    max-height: 25%;
+    width: 100px;
+    display: block; /* remove extra space below image */
+}
+
+.container {
+    height: 200px;
+    position: relative;
+}
+  
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.bt {
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <!--<div>
+        <img src="image/LCRA_288.png" alt="">
+    </div>-->
+<div class="assetEntry">
+    <div class="bar" style="display: block; background-color: white;">
+ 
+    </div>
+    <h1>Asset Entry</h1>
+    <div>
+        <form id="myForm">
+            <div class="assetBody">
+            <div class="test">
+                <label for="dname">Device Name:</label>
+                <input type="text" id="dname" name="dname"><span class="requiredField">*</span> 
+            </div>
+            <br>
+            <div class="test">
+                <label for="mname">NIC Address:</label>
+                <input type="text" id="mname" name="mname" size="" placeholder="Enter numbers and alphabets only."><span class="requiredField">*</span>
+            </div>
+            <br>
+            <div class="test">
+                <label for="departName">Choose Department:</label>
+                <select name="lcraDepart" class="lcraDepart" id="lcraDepart" size="" onclick="whichDepart();">
+                <option value="">--Please choose an option--</option>
+                </select> <!--<button onclick="whichDepart()">Click Here</button>-->
+            </div>
+            <br>
+            <div class="test">
+                <label for="bname">Choose Building:</label>
+                <select name="lcraBuild" class="lcraBuild" id="lcraBuild" onclick="whichBuild();">
+                <option value="">--Please choose an option--</option>
+                </select>
+            </div>
+            <br>
+            <div class="test">
+                <label for="office">Office Number:</label>
+                <input type="text" id="officeNum" name="officeNum">
+            </div>
+            <br>
+            <div class="test">
+                <label for="shared">Shared Device:</label>
+                <select name="sharedDev" id="sharedDev">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+            <br>
+            <div class="test">
+            <label for="store">In Storage:</label>
+            <select name="inStor" id="inStor">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+            </div>
+            <br>
+            <div class="test">
+            <label for="decom">Been Decommissioned:</label>
+            <select name="decomm" id="decomm">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+            </div>
+            <br>
+            <div class="test">
+                <label for="comment">Comments:</label>
+                <br>
+                <textarea id="commentBox" class="commentBox" onkeyup="countChars(this);" maxlength="150" name="commentBox" rows="4" cols="50" placeholder="Start Typin..."autofocus></textarea>
+                <br>
+                <div id="the-count">
+                    <span id="current">0</span>
+                    <span id="maximum">/ 150</span>
+                </div>
+            </div>
+            </div>
+            <br>
+            <div class="container" >
+                <div class="center">
+                    <input type="button" id="bt" value="Save data to file" onclick="saveFile()">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    'use strict'
+
+let MyLibrary
+if (typeof document !== 'undefined') {
+  MyLibrary = require('my-library').default
+}
+
+//let lcraDepartment = ["Business Development", "Chief Administrative Officer", "Chief Commercial Officer", "Chief Financial Officer", "Chief of Staff", "Commercial Asset Management", "Communications", "Community Services", "Construction I", "Construction II", "Construction Support", "Controller", "Corporate Events", "Corporate Strategy", "Critical Infra Protection", "Critical Infrastructure Protection", "Customer Operations", "Cybersecurity", "Dam and Hydro", "Digital Services", "Enterprise Operations", "Environmental Affairs", "Environmental Field Services", "Environmental Lab", "Facilities Planning Management", "Finance", "Financial Planning & Strategy", "Fleet Services", "FPP Maintenance", "FPP Operations", "FPP Plant Support", "FRG Maintenance", "FRG Operations", "FRG Plant Support", "Fuels Accounting", "General Counsel", "General Manager", "Generation Environmental Group", "Generation Operations Mgmt", "Governmental & Regional Affairs", "Hilbig Gas Operations", "Human Resources", "Information Management", "Irrigation Operations", "Lands & Conservation", "Legal Services", "Line & Structural Engineering", "Line Operations", "LPPP Maintenance", "LPPP Operations", "LPPP Plant Support", "Materials Management", "Mid-Office Credit and Risk", "P&G Oper Reliability Group", "Parks", "Parks District - Coastal", "Parks District - East", "Parks District - West", "Plant Operations Engr. Group", "Plant Support Service", "Project Management", "Public Affairs", "QSE Operations", "Rail Fleet Operations", "Rangers", "Real Estate Services", "Regulatory & Market Compliance", "Regulatory Affairs", "Resilience", "River Operations", "Safety Services", "Sandy Creek Energy Station", "Security", "Service Quality & Planning", "SOCC Operations", "Strategic Initiatives & Transformation", "Strategic Sourcing", "Substation Engineering", "Substation Operations", "Supply Chain", "Survey GIS & Technical Svc", "System Control Services", "System Infrastructure", "Technical & Engineering Services", "Telecom Engineering", "Trans Contract Construction", "Trans Operational Intelligence", "Transmission Design & Protect", "Transmission Executive Mgmt", "Transmission Field Services", "Transmission Planning", "Transmission Protection", "Transmission Strategic Svcs", "Water", "Water Contracts & Conservation", "Water Engineering", "Water Quality", "Water Resource Management", "Water Surface Management", "Wholesale Markets & Sup"];
+
+//console.log(lcraDepartment[3])
+
+//let lcraBuilding = ["Admin Building", "Arbuckle Reservoir", "Auxiliary Building", "Bastrop", "Bay City", "Black Rock Park", "Boerne Substation", "Buchanan Dam", "Buchanan Dam HOCC", "Building A", "Building B", "Building C", "Building D", "Building E", "Building F", "Building G", "Building H", "Building S", "Building T", "Comal Substation", "Communication Building", "D151L", "D152", "Eagle Lake", "EMF", "Environmental Office (2nd Flr U3)", "EnvLab", "Fergusen", "Ferguson", "FPP", "FPP Stores", "Garwood", "GCWD", "Gillespie Substation", "Hancock", "Hilbig", "HOCC", "I&C Shop", "Lakeside Water Division", "Lane City", "LANE CITY / Arbuckle", "Llano Substation", "Long", "Lost Pines", "LP1 Admin Building", "LP1 Control Room", "LSWD", "Maintenance Building", "Maintenance Shop", "Mansfield Annex", "Mansfield Dam", "Matagorda Bay", "MCKR Visitor Center", "Miller", "Miller", "Miller Dam", "Morgan Building", "North Shore Park", "PET Lab", "Production Control Room", "Redbud", "San Angelo", "San Saba", "Scrubber Building", "Service Building", "SGP Admin Building", "SGP Control Room", "Shapiro", "Shop Building", "Smithville", "SOCC", "South Shore Park", "Steel Shop", "TOCC", "U1&2 Training Area", "U1/2 Water Lab", "Unit 3 (1st Floor)", "Vehicle Maintenance Building", "Water Lab", "Wirtz Dam", "WMF", "Work Truck"];
+
+//console.log(lcraBuilding[5])
+
+//let lcraDepart = document.getElementsByTagName("select");
+//let lcraBuild = document.getElementsByClassName("lcraBuild");
+
+function whichDepart() {
+
+    let lcraDepartment = ["Business Development", "Chief Administrative Officer", "Chief Commercial Officer", "Chief Financial Officer", "Chief of Staff", "Commercial Asset Management", "Communications", "Community Services", "Construction I", "Construction II", "Construction Support", "Controller", "Corporate Events", "Corporate Strategy", "Critical Infra Protection", "Critical Infrastructure Protection", "Customer Operations", "Cybersecurity", "Dam and Hydro", "Digital Services", "Enterprise Operations", "Environmental Affairs", "Environmental Field Services", "Environmental Lab", "Facilities Planning Management", "Finance", "Financial Planning & Strategy", "Fleet Services", "FPP Maintenance", "FPP Operations", "FPP Plant Support", "FRG Maintenance", "FRG Operations", "FRG Plant Support", "Fuels Accounting", "General Counsel", "General Manager", "Generation Environmental Group", "Generation Operations Mgmt", "Governmental & Regional Affairs", "Hilbig Gas Operations", "Human Resources", "Information Management", "Irrigation Operations", "Lands & Conservation", "Legal Services", "Line & Structural Engineering", "Line Operations", "LPPP Maintenance", "LPPP Operations", "LPPP Plant Support", "Materials Management", "Mid-Office Credit and Risk", "P&G Oper Reliability Group", "Parks", "Parks District - Coastal", "Parks District - East", "Parks District - West", "Plant Operations Engr. Group", "Plant Support Service", "Project Management", "Public Affairs", "QSE Operations", "Rail Fleet Operations", "Rangers", "Real Estate Services", "Regulatory & Market Compliance", "Regulatory Affairs", "Resilience", "River Operations", "Safety Services", "Sandy Creek Energy Station", "Security", "Service Quality & Planning", "SOCC Operations", "Strategic Initiatives & Transformation", "Strategic Sourcing", "Substation Engineering", "Substation Operations", "Supply Chain", "Survey GIS & Technical Svc", "System Control Services", "System Infrastructure", "Technical & Engineering Services", "Telecom Engineering", "Trans Contract Construction", "Trans Operational Intelligence", "Transmission Design & Protect", "Transmission Executive Mgmt", "Transmission Field Services", "Transmission Planning", "Transmission Protection", "Transmission Strategic Svcs", "Water", "Water Contracts & Conservation", "Water Engineering", "Water Quality", "Water Resource Management", "Water Surface Management", "Wholesale Markets & Sup"];
+
+    //let lcraDepart = document.getElementById("lcraDepart");
+
+
+     for(let i = 0; i < lcraDepartment.length; i++){
+        let optn = lcraDepartment[i];
+        let el = document.createElement("option");
+        el.value = optn;
+        el.textContent = optn;
+        lcraDepart.appendChild(el);
+    }
+}
+
+
+function whichBuild() {
+
+    let lcraBuilding = ["Admin Building", "Arbuckle Reservoir", "Auxiliary Building", "Bastrop", "Bay City", "Black Rock Park", "Boerne Substation", "Buchanan Dam", "Buchanan Dam HOCC", "Building A", "Building B", "Building C", "Building D", "Building E", "Building F", "Building G", "Building H", "Building S", "Building T", "Comal Substation", "Communication Building", "D151L", "D152", "Eagle Lake", "EMF", "Environmental Office (2nd Flr U3)", "EnvLab", "Fergusen", "Ferguson", "FPP", "FPP Stores", "Garwood", "GCWD", "Gillespie Substation", "Hancock", "Hilbig", "HOCC", "I&C Shop", "Lakeside Water Division", "Lane City", "LANE CITY / Arbuckle", "Llano Substation", "Long", "Lost Pines", "LP1 Admin Building", "LP1 Control Room", "LSWD", "Maintenance Building", "Maintenance Shop", "Mansfield Annex", "Mansfield Dam", "Matagorda Bay", "MCKR Visitor Center", "Miller", "Miller", "Miller Dam", "Morgan Building", "North Shore Park", "PET Lab", "Production Control Room", "Redbud", "San Angelo", "San Saba", "Scrubber Building", "Service Building", "SGP Admin Building", "SGP Control Room", "Shapiro", "Shop Building", "Smithville", "SOCC", "South Shore Park", "Steel Shop", "TOCC", "U1&2 Training Area", "U1/2 Water Lab", "Unit 3 (1st Floor)", "Vehicle Maintenance Building", "Water Lab", "Wirtz Dam", "WMF", "Work Truck"];
+
+    //let lcraBuild = document.getElementById("lcraBuild");
+
+
+     for(let i = 0; i < lcraBuilding.length; i++){
+        let optn = lcraBuilding[i];
+        let el = document.createElement("option");
+        el.textContent = optn;
+        el.value = optn;
+        lcraBuild.appendChild(el);
+    }
+}
+function resetForm() {
+    document.getElementById("myForm").reset();
+}
+function countChars(obj){
+    document.getElementById("current").innerHTML = obj.value.length;
+}
+
+function saveFile() {
+
+    // Get the data from each element on the form.
+    const deviceName = document.getElementById('dname');
+    const nicAddress = document.getElementById('mname');
+    const department = document.getElementById('lcraDepart');
+    const building = document.getElementById('lcraBuild');
+    const officeNumber = document.getElementById('officeNum');
+    const sharedDevice = document.getElementById('sharedDev');
+    const inStorage = document.getElementById('inStor');
+    const decommissioned = document.getElementById('decomm');
+    const comments = document.getElementById('commentBox')
+
+
+    // Function to check if there is a value in Device Name and NIC Address
+    function formRequirements() {
+        if (deviceName.value === '' && nicAddress.value !== '') {
+            alert ("Please enter Device Name.")
+        }
+        else if (nicAddress.value === '' && deviceName.value !== '') {
+            alert ("Please enter NIC Address.")
+        }
+        else if (deviceName.value === '' && nicAddress.value === '') {
+            alert ("Please enter Device Name & NIC Address.")
+        }
+
+        // Function to check letters and numbers
+        function alphanumeric() { 
+            let letters = /^[0-9a-zA-Z]+$/;
+    
+            if (nicAddress.value.match(letters)) {
+            return true;
+            }
+            else {
+            alert ('Please input alphanumeric characters only');
+            return false;
+            }
+        }
+        alphanumeric();
+    } 
+
+    formRequirements();
+
+    // This variable stores all the data.
+    /*let data =
+        'Device Name = ' + deviceName.value + ' \r\n' + 
+        'Network - NIC Address = ' + nicAddress.value + ' \r\n' + 
+        'Custom Data - Forms - Asset Location - Department = ' + department.value + ' \r\n' + 
+        'Custom Data - Forms - Asset Location - Building = ' + building.value + ' \r\n' + 
+        'Custom Data - Forms - Asset Location - Office Number = ' + officeNumber.value + ' \r\n' +
+        'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' + 
+        'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+        'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value + ' \r\n' +
+        'Custom Data - Forms - Asset Location - Comments = ' + comments.value;*/
+    //console.log(department.value)
+    if (deviceName.value !== '' && nicAddress.value !== '') {
+
+        let data;
+            if (department.value === '' && building.value !== '' && officeNumber.value !== '' && comments.value !== '') {
+                console.log(1)
+                data = 
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Building = ' + building.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Office Number = ' + officeNumber.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Comments = ' + comments.value;
+            }
+            else if (building.value === '' && department.value !== '' && officeNumber.value !== '' && comments.value !== '') {
+                console.log(2)
+                data = 
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Department = ' + department.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Office Number = ' + officeNumber.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Comments = ' + comments.value;
+            }
+            else if (officeNumber.value === '' && department.value !== '' && building.value !== '' && comments.value !== '') {
+                console.log(3)
+                data =
+                'Device Name = ' + deviceName.value + ' \r\n' + 
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Department = ' + department.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Building = ' + building.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Comments = ' + comments.value;
+            }
+            else if (comments.value === '' && department.value !== '' && building.value !== '' && officeNumber.value !== '') {
+                console.log(4)
+                data =
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Department = ' + department.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Building = ' + building.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Office Number = ' + officeNumber.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value;
+            }
+
+            else if (department.value === '' && building.value === '' && officeNumber.value !== '' && comments.value !== '') {
+                console.log(5)
+                data =
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Office Number = ' + officeNumber.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Comments = ' + comments.value;
+            }
+
+            else if (department.value === '' && officeNumber.value === '' && building.value !== '' && comments.value !== '') {
+                console.log(6)
+                data =
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Building = ' + building.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Comments = ' + comments.value;
+            }
+
+            else if (building.value === '' && officeNumber.value === '' && department.value !== '' && comments.value !== '') {
+                console.log(7)
+                data =
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Department = ' + department.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Comments = ' + comments.value;
+            }
+            else if (department.value === '' && building.value === '' && officeNumber.value === '' && comments.value !== '') {
+                console.log(8)
+                data =
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Comments = ' + comments.value;
+            }
+            else if (department.value !== '' && officeNumber.value === '' && building.value !== '' && comments.value === '') {
+                console.log(9)
+                data =
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Department = ' + department.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Building = ' + building.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value;
+                
+            }
+
+            else if (department.value === '' && officeNumber.value !== '' && building.value !== '' && comments.value === '') {
+                console.log(10)
+                data =
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Building = ' + building.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Office Number = ' + officeNumber.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value;
+                
+            }
+            else if (department.value !== '' && officeNumber.value !== '' && building.value === '' && comments.value === '') {
+                console.log(11)
+                data =
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Department = ' + department.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Office Number = ' + officeNumber.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value;
+                
+
+            }
+            else if (department.value !== '' && officeNumber.value === '' && building.value === '' && comments.value === '') {
+                console.log(12)
+                data =
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Department = ' + department.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value;
+               
+            }
+            else if (department.value === '' && officeNumber.value === '' && building.value !== '' && comments.value === '') {
+                console.log(13)
+                data =
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Building = ' + building.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value;
+                
+            }
+            else if (department.value === '' && officeNumber.value !== '' && building.value === '' && comments.value === '') {
+                console.log(14)
+                data =
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Office Number = ' + officeNumber.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value;
+                
+            }
+            else if (department.value === '' && officeNumber.value === '' && building.value === '' && comments.value === '') {
+                console.log(15)
+                data =
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value;
+            }
+            else if (department.value !== '' && building.value !== '' && officeNumber.value !== '' && comments.value !== ''){
+                console.log(16)
+                data =
+                'Device Name = ' + deviceName.value + ' \r\n' +
+                'Network - NIC Address = ' + nicAddress.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Department = ' + department.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Building = ' + building.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Office Number = ' + officeNumber.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Shared Device = ' + sharedDevice.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - In Storage =  ' + inStorage.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Decom = ' + decommissioned.value + ' \r\n' +
+                'Custom Data - Forms - Asset Location - Comments = ' + comments.value;
+            }
+
+        // Convert the text to BLOB.
+        const textToBLOB = new Blob([data], { type: 'text/plain' });
+        const sFileName = 'formData.ims';
+
+        // The file to save the data.
+        let newLink = document.createElement("a");
+        newLink.download = (`${deviceName.value}.ims`);
+
+        if (window.webkitURL != null) {
+                newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+        }
+
+        newLink.click();
+    }
+    resetForm();
+}
+
+</script>
+</body>
+</html>
